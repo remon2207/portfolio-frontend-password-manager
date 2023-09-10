@@ -50,6 +50,8 @@
         "newlines-between": "always"
       }
     ],
-    "react/jsx-sort-props": "warn"
+    "react/jsx-sort-props": "warn",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/jsx-no-useless-fragment": "off"
   }
 }
