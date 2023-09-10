@@ -8,6 +8,7 @@
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript",
+    "storybook",
     "plugin:@typescript-eslint/recommended",
     "next",
     "prettier"
