@@ -1,15 +1,15 @@
-import { Button } from '@/components/atoms/Button'
+import { CustomLink } from '@/components/atoms/CustomLink'
 import { Title } from '@/components/atoms/Title'
 
 export const HeaderBar = () => {
   return (
     <div className="flex h-20 justify-between">
-      <Button buttonName="新規作成" className="header-button ml-96" href="create" />
+      <CustomLink className="header-button ml-4 md:ml-20 xl:ml-64" href="create" linkName="新規作成" />
       <Title
-        className="my-auto text-center text-4xl font-bold underline-offset-8 hover:underline"
+        className="my-auto text-center text-2xl font-bold underline-offset-8 hover:underline md:text-4xl xl:text-5xl"
         title="パスワード管理"
       />
-      <Button buttonName="ログアウト" className="header-button mr-96" href="/signin" />
+      <CustomLink className="header-button mr-4 md:mr-20 xl:mr-64" href="/signin" linkName="ログアウト" />
     </div>
   )
 }
