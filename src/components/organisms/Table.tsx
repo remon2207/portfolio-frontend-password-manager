@@ -1,7 +1,8 @@
+import { PostgrestSingleResponse } from '@supabase/supabase-js'
+
 import { CellFrame } from '@/components/molecules/CellFrame'
 import { TableHeaderFrame } from '@/components/molecules/TableHeaderFrame'
 import { Passwords } from '@/types/signals'
-import { PostgrestSingleResponse } from '@supabase/supabase-js'
 
 type Props = {
   passwords: PostgrestSingleResponse<Passwords[]>
@@ -9,24 +10,24 @@ type Props = {
 
 export const Table: React.FC<Props> = ({ passwords }) => {
   return (
-    <table className="mx-auto mt-10 table w-3/4">
+    <table className="table table-xs mt-10 xl:table-md xl:mx-auto xl:w-1/2">
       <TableHeaderFrame
-        service="サービス"
         email="メールアドレス"
         name="名前"
+        note="メモ"
         password="パスワード"
+        service="サービス"
         twoFactor="2段階認証の有無"
-        secret="シークレット"
       />
-      {/* <CellFrame  /> */}
       {passwords.data?.map((pw) => (
         <CellFrame
-          service={pw.service}
+          key={pw.id}
           email={pw.email}
           name={pw.name}
+          note={pw.note}
           password={pw.password}
+          service={pw.service}
           twoFactor={pw.twoFactor ? '有' : '無'}
-          secret={pw.secret}
         />
       ))}
     </table>
