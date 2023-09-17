@@ -6,19 +6,19 @@ type Props = {
   name: string
   password: string
   twoFactor: string
-  secret: string
+  note: string
 }
 
-export const TableHeaderFrame: React.FC<Props> = ({ service, email, name, password, twoFactor, secret }) => {
+export const TableHeaderFrame: React.FC<Props> = ({ service, email, name, password, twoFactor, note }) => {
   return (
     <thead>
       <tr>
-        <TableHead header={service} />
-        <TableHead header={email} />
-        <TableHead header={name} />
-        <TableHead header={password} />
-        <TableHead header={twoFactor} />
-        <TableHead header={secret} />
+        <TableHead className="break-all" header={service} />
+        <TableHead className="break-all" header={email} />
+        <TableHead className="break-all" header={name} />
+        <TableHead className="break-all" header={password} />
+        <TableHead className="whitespace-normal break-all" header={twoFactor} />
+        <TableHead className="break-all" header={note} />
       </tr>
     </thead>
   )
