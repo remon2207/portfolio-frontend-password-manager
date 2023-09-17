@@ -6,4 +6,16 @@
   .header-button {
     @apply my-auto rounded-md bg-blue-600 p-2 text-white shadow-xl hover:translate-y-1 hover:shadow-none transition
   }
+  .cell-input {
+    @apply outline-none hover:cursor-pointer break-all
+  }
+  .input-form {
+    @apply pt-4 pb-2 input input-bordered mb-10
+  }
+  .form-button {
+    @apply rounded-md border border-blue-500 shadow-md p-2 mx-10 hover:shadow-none transition
+  }
+  .form-span {
+    @apply absolute rounded-lg bg-red-100 p-1 text-xs
+  }
 }
