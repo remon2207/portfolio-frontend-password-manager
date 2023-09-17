@@ -1,5 +1,13 @@
-const create = () => {
-  return <div>create</div>
+import { Form } from '@/components/organisms/Form'
+
+import type { NextPage } from 'next'
+
+const Create: NextPage = () => {
+  return (
+    <>
+      <Form />
+    </>
+  )
 }
 
-export default create
+export default Create
