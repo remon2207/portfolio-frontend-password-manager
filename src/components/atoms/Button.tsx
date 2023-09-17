@@ -1,15 +1,17 @@
-import Link from 'next/link'
-
 type Props = {
+  type: 'button' | 'submit' | 'reset' | undefined
   className?: string
-  href: string
-  buttonName: string
+  name: string
+  onClick?: () => void
 }
 
-export const Button: React.FC<Props> = ({ className, buttonName, href }) => {
+export const Button: React.FC<Props> = ({ type, className, name, onClick }) => {
   return (
-    <Link className={className} href={href}>
-      {buttonName}
-    </Link>
+    <>
+      {/* eslint-disable-next-line react/button-has-type */}
+      <button className={className} onClick={onClick} type={type}>
+        {name}
+      </button>
+    </>
   )
 }
