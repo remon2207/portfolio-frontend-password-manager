@@ -5,10 +5,11 @@ export type Users = {
 }
 
 export type Passwords = {
+  id?: number
   service: string
   email: string
   name: string
   password: string
   twoFactor: boolean
-  secret: string
+  note: string
 }
