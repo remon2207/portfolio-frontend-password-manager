@@ -4,14 +4,10 @@ import userEvent from '@testing-library/user-event'
 import { InputForm } from '@/components/molecules/InputForm'
 import { Form } from '@/components/organisms/Form'
 
-const push = jest.fn()
-
 jest.mock('next/navigation', () => ({
-  useRouter: () => {
-    return {
-      push,
-    }
-  },
+  useRouter: () => ({
+    push: jest.fn(),
+  }),
 }))
 
 describe('InputForm component', () => {
