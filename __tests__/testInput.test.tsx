@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { InputForm } from '@/components/molecules/InputForm'
 import { Form } from '@/components/organisms/Form'
 
 jest.mock('next/navigation', () => ({
@@ -35,21 +34,30 @@ describe('InputForm component', () => {
   test('Form click', async () => {
     render(<Form />)
 
+    const expectExec = (id: HTMLElement | null) => expect(id).not.toBeInTheDocument()
+
     const service = screen.getByTestId('service')
     const email = screen.getByTestId('email')
     const name = screen.getByTestId('name')
     const password = screen.getByTestId('password')
-    const secret = screen.getByTestId('note')
-    const submitButton = screen.getByText('送信')
+    const note = screen.getByTestId('note')
+    const submitButton = screen.getByRole('button', { name: '送信' })
 
-    userEvent.type(service, 'service')
-    userEvent.type(email, 'email@gmail.com')
-    userEvent.type(name, 'name')
-    userEvent.type(password, 'password')
-    userEvent.type(secret, 'note')
-    userEvent.click(submitButton)
+    await userEvent.type(service, 'service')
+    await userEvent.type(email, 'email@gmail.com')
+    await userEvent.type(name, 'name')
+    await userEvent.type(password, 'password')
+    await userEvent.type(note, 'note')
+    await userEvent.click(submitButton)
 
-    expect(push).toHaveBeenCalledTimes(1)
-    expect(push).toBeCalledWith('/')
+    const serviceErr = screen.queryByTestId('serviceError')
+    const emailErr = screen.queryByTestId('emailError')
+    const nameErr = screen.queryByTestId('nameError')
+    const passwordErr = screen.queryByTestId('passwordError')
+
+    expectExec(serviceErr)
+    expectExec(emailErr)
+    expectExec(nameErr)
+    expectExec(passwordErr)
   })
 })
