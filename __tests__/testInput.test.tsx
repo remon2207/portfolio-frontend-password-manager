@@ -13,8 +13,6 @@ describe('InputForm component', () => {
   test('Text box exist', () => {
     render(<Form />)
 
-    const expectExec = (id: HTMLElement) => expect(id).toBeInTheDocument()
-
     const service = screen.getByTestId('service')
     const email = screen.getByTestId('email')
     const name = screen.getByTestId('name')
@@ -22,19 +20,15 @@ describe('InputForm component', () => {
     const note = screen.getByTestId('note')
     const submitButton = screen.getByRole('button', { name: '送信' })
 
-    expectExec(service)
-    expectExec(email)
-    expectExec(name)
-    expectExec(password)
-    expectExec(password)
-    expectExec(note)
-    expectExec(submitButton)
+    const elems = [service, email, name, password, note, submitButton]
+
+    elems.forEach((elem) => {
+      expect(elem).toBeInTheDocument()
+    })
   })
 
-  test('Form click', async () => {
+  test('Enter the form and click the button', async () => {
     render(<Form />)
-
-    const expectExec = (id: HTMLElement | null) => expect(id).not.toBeInTheDocument()
 
     const service = screen.getByTestId('service')
     const email = screen.getByTestId('email')
@@ -54,10 +48,12 @@ describe('InputForm component', () => {
     const emailErr = screen.queryByTestId('emailError')
     const nameErr = screen.queryByTestId('nameError')
     const passwordErr = screen.queryByTestId('passwordError')
+    const noteErr = screen.queryByTestId('noteError')
 
-    expectExec(serviceErr)
-    expectExec(emailErr)
-    expectExec(nameErr)
-    expectExec(passwordErr)
+    const errors = [serviceErr, emailErr, nameErr, passwordErr, noteErr]
+
+    errors.forEach((error) => {
+      expect(error).not.toBeInTheDocument()
+    })
   })
 })
