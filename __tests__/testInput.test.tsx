@@ -16,11 +16,24 @@ jest.mock('next/navigation', () => ({
 
 describe('InputForm component', () => {
   test('Text box exist', () => {
-    render(<InputForm htmlFor="test" id="test" labelName="test" readOnly type="text" />)
+    render(<Form />)
 
-    const box = screen.getByLabelText('test')
+    const expectExec = (id: HTMLElement) => expect(id).toBeInTheDocument()
 
-    expect(box).toBeInTheDocument()
+    const service = screen.getByTestId('service')
+    const email = screen.getByTestId('email')
+    const name = screen.getByTestId('name')
+    const password = screen.getByTestId('password')
+    const note = screen.getByTestId('note')
+    const submitButton = screen.getByRole('button', { name: '送信' })
+
+    expectExec(service)
+    expectExec(email)
+    expectExec(name)
+    expectExec(password)
+    expectExec(password)
+    expectExec(note)
+    expectExec(submitButton)
   })
 
   test('Form click', async () => {
