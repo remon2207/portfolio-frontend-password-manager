@@ -41,9 +41,13 @@
   }
 
   .form-span {
-    @apply absolute
+    @apply relative
+    -top-2
     rounded-lg
     bg-red-100
-    text-xs;
+    py-1
+    text-center
+    text-xs
+    sm:text-sm;
   }
 }
