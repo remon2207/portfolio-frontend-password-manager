@@ -9,10 +9,10 @@ import { useSubmit } from '@/hooks/useSubmit'
 import { schema } from '@/utils/YupSchema'
 
 type Props = {
-  serviceDefaultValue: string
-  emailDefaultValue: string
-  nameDefaultValue: string
-  passwordDefaultValue: string
+  serviceDefaultValue?: string
+  emailDefaultValue?: string
+  nameDefaultValue?: string
+  passwordDefaultValue?: string
   id?: number
 }
 
