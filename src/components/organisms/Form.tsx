@@ -1,14 +1,12 @@
 'use client'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import { usePathname } from 'next/navigation'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 import { FormButton } from '@/components/molecules/FormButton'
 import { InputForm } from '@/components/molecules/InputForm'
-import { Passwords } from '@/types/signals'
+import { useSubmit } from '@/hooks/useSubmit'
 import { schema } from '@/utils/YupSchema'
-import { supabase } from '@/utils/supabase'
 
 type Props = {
   serviceDefaultValue: string
@@ -23,25 +21,13 @@ export const Form: React.FC<Props> = ({
   emailDefaultValue,
   nameDefaultValue,
   passwordDefaultValue,
-  id,
 }) => {
-  const pathname = usePathname()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) })
-
-  const onSubmit: SubmitHandler<Passwords> = async ({ service, email, name, password, two_factor }) => {
-    if (pathname === '/create') {
-      // await supabase.from('password').insert([{ service, email, name, password, two_factor, user_id: 1 }])
-    } else if (pathname === '/edit') {
-      if (typeof id === 'number') {
-        // await supabase.from('password').update({ service, email, name, password, two_factor }).eq('id', id)
-      }
-    }
-    window.location.href = '/'
-  }
+  const { onSubmit } = useSubmit()
 
   return (
     <>
