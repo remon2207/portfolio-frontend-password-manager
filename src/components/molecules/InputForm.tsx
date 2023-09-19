@@ -1,3 +1,5 @@
+'use client'
+
 import { UseFormRegisterReturn } from 'react-hook-form'
 
 import { Input } from '@/components/atoms/Input'
@@ -13,6 +15,7 @@ type Props = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   testId?: string
   register?: UseFormRegisterReturn
+  defaultValue?: string | number | readonly string[] | undefined
 }
 
 export const InputForm: React.FC<Props> = ({
@@ -25,12 +28,14 @@ export const InputForm: React.FC<Props> = ({
   testId,
   className,
   register,
+  defaultValue,
 }) => {
   return (
     <>
       <Label className="mx-auto mb-2" htmlFor={htmlFor} labelName={labelName} />
       <Input
         className={className}
+        defaultValue={defaultValue}
         id={id}
         onChange={onChange}
         readOnly={readOnly}
