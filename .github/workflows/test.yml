@@ -15,8 +15,3 @@ jobs:
           run: npm ci
         - name: Run test
           run: npm test
-          continue-on-error: true
-        - if: ${{ steps.test.outputs.error != '' && !contains(steps.test.outputs.error, 'supabaseUrl is required') }}
-          run: |
-            echo '::error ::test failed with "${{ steps.test.outputs.error }}"'
-            exit 1
