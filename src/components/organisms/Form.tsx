@@ -39,6 +39,8 @@ export const Form: React.FC<Props> = ({
       if (typeof id === 'number') {
         await supabase.from('password').update({ service, email, name, password, two_factor }).eq('id', id)
       }
+    } else if (pathname === '/') {
+      return
     }
     window.location.href = '/'
   }

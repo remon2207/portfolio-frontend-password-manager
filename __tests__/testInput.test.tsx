@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { Form } from '@/components/organisms/Form'
-import { CreateForm } from '@/components/templates/CreateForm'
 
 jest.mock('next/navigation', () => ({
   useRouter: () => ({
@@ -13,8 +12,7 @@ jest.mock('next/navigation', () => ({
 
 describe('InputForm component', () => {
   test('Text box exist', () => {
-    // render(<Form emailDefaultValue="" nameDefaultValue="" passwordDefaultValue="" serviceDefaultValue="" />)
-    render(<CreateForm />)
+    render(<Form emailDefaultValue="" nameDefaultValue="" passwordDefaultValue="" serviceDefaultValue="" />)
 
     const service = screen.getByTestId('service')
     const email = screen.getByTestId('email')
@@ -32,7 +30,7 @@ describe('InputForm component', () => {
   test('Enter the form and click the button', async () => {
     render(
       <Form
-        emailDefaultValue="email@email.com"
+        emailDefaultValue="email@gmail.com"
         nameDefaultValue="name"
         passwordDefaultValue="password"
         serviceDefaultValue="service"
