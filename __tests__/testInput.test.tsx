@@ -11,15 +11,6 @@ jest.mock('next/navigation', () => ({
   usePathname: jest.fn(),
 }))
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-const supabase = createClient(supabaseUrl, supabaseKey, {
-  auth: {
-    persistSession: false,
-  },
-})
-
 describe('InputForm component', () => {
   test('Text box exist', () => {
     render(<Form emailDefaultValue="" nameDefaultValue="" passwordDefaultValue="" serviceDefaultValue="" />)
