@@ -28,7 +28,7 @@ export const Table: React.FC<Props> = ({ passwords }) => {
           name={pw.name}
           password={pw.password}
           service={pw.service}
-          twoFactor={pw.twoFactor ? '有' : '無'}
+          twoFactor={pw.two_factor ? '有' : '無'}
         />
       ))}
     </table>

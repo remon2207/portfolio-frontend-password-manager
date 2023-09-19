@@ -5,5 +5,5 @@ export const schema = yup.object({
   email: yup.string().email('有効なメールアドレスを入力してください').required('メールアドレスを入力してください'),
   name: yup.string().required('名前を入力してください'),
   password: yup.string().required('パスワードを入力してください'),
-  twoFactor: yup.boolean().required(),
+  two_factor: yup.boolean().required(),
 })

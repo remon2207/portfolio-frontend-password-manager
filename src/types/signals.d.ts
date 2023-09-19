@@ -10,5 +10,5 @@ export type Passwords = {
   email: string
   name: string
   password: string
-  twoFactor: boolean
+  two_factor: boolean
 }

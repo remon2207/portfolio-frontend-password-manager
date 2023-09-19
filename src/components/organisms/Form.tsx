@@ -112,7 +112,7 @@ export const Form: React.FC<Props> = ({
             htmlFor="twoFactor"
             id="twoFactor"
             labelName="2段階認証の有無"
-            register={register('twoFactor')}
+            register={register('two_factor')}
             testId="twoFactor"
             type="checkbox"
           />
