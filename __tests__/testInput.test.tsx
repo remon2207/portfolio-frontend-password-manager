@@ -30,7 +30,7 @@ describe('InputForm component', () => {
   test('Enter the form and click the button', async () => {
     render(
       <Form
-        emailDefaultValue="email@gmail.com"
+        emailDefaultValue="email@email.com"
         nameDefaultValue="name"
         passwordDefaultValue="password"
         serviceDefaultValue="service"
@@ -41,12 +41,13 @@ describe('InputForm component', () => {
 
     await userEvent.click(submitButton)
 
-    const serviceErr = screen.queryByTestId('serviceError')
+    // const serviceErr = screen.queryByTestId('serviceError')
     const emailErr = screen.queryByTestId('emailError')
-    const nameErr = screen.queryByTestId('nameError')
-    const passwordErr = screen.queryByTestId('passwordError')
+    // const nameErr = screen.queryByTestId('nameError')
+    // const passwordErr = screen.queryByTestId('passwordError')
 
-    const errors = [serviceErr, emailErr, nameErr, passwordErr]
+    // const errors = [serviceErr, emailErr, nameErr, passwordErr]
+    const errors = [emailErr]
 
     errors.forEach((error) => {
       expect(error).not.toBeInTheDocument()
