@@ -27,8 +27,8 @@ describe('InputForm component', () => {
     })
   })
 
-  test('Enter the form and click the button', async () => {
-    render(<Form emailDefaultValue="email@email.com" />)
+  test('Enter the email and click the button', async () => {
+    render(<Form emailDefaultValue="email" />)
 
     const submitButton = screen.getByRole('button', { name: '送信' })
 
@@ -43,7 +43,7 @@ describe('InputForm component', () => {
     const errors = [emailErr]
 
     errors.forEach((error) => {
-      expect(error).not.toBeInTheDocument()
+      expect(error).toBeInTheDocument()
     })
   })
 })
