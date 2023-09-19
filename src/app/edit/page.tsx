@@ -8,16 +8,13 @@ import type { NextPage } from 'next'
 
 const Edit: NextPage = () => {
   const params = useSearchParams()
-  const id = params.get('id')
+  const id = Number(params.get('id'))
 
-  if (typeof id === 'string') {
-    return (
-      <>
-        <EditForm id={id} />
-      </>
-    )
-  }
-  return <>error</>
+  return (
+    <>
+      <EditForm id={id} />
+    </>
+  )
 }
 
 export default Edit
