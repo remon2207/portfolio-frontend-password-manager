@@ -28,14 +28,7 @@ describe('InputForm component', () => {
   })
 
   test('Enter the form and click the button', async () => {
-    render(
-      <Form
-        emailDefaultValue="email@email.com"
-        nameDefaultValue="name"
-        passwordDefaultValue="password"
-        serviceDefaultValue="service"
-      />
-    )
+    render(<Form emailDefaultValue="email@email.com" />)
 
     const submitButton = screen.getByRole('button', { name: '送信' })
 
