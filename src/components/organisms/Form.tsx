@@ -34,13 +34,11 @@ export const Form: React.FC<Props> = ({
 
   const onSubmit: SubmitHandler<Passwords> = async ({ service, email, name, password, two_factor }) => {
     if (pathname === '/create') {
-      await supabase.from('password').insert([{ service, email, name, password, two_factor, user_id: 1 }])
+      // await supabase.from('password').insert([{ service, email, name, password, two_factor, user_id: 1 }])
     } else if (pathname === '/edit') {
       if (typeof id === 'number') {
-        await supabase.from('password').update({ service, email, name, password, two_factor }).eq('id', id)
+        // await supabase.from('password').update({ service, email, name, password, two_factor }).eq('id', id)
       }
-    } else if (pathname === '/') {
-      return
     }
     window.location.href = '/'
   }
