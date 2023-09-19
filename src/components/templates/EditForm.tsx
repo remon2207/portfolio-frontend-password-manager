@@ -2,7 +2,7 @@ import { Form } from '@/components/organisms/Form'
 import { supabase } from '@/utils/supabase'
 
 type Props = {
-  id: string
+  id: number
 }
 
 export const EditForm: React.FC<Props> = async ({ id }) => {
@@ -14,6 +14,7 @@ export const EditForm: React.FC<Props> = async ({ id }) => {
         <Form
           key={pw.id}
           emailDefaultValue={pw.email}
+          id={pw.id}
           nameDefaultValue={pw.name}
           passwordDefaultValue={pw.password}
           serviceDefaultValue={pw.service}
