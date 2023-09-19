@@ -11,16 +11,15 @@ jest.mock('next/navigation', () => ({
 
 describe('InputForm component', () => {
   test('Text box exist', () => {
-    render(<Form />)
+    render(<Form emailDefaultValue="" nameDefaultValue="" passwordDefaultValue="" serviceDefaultValue="" />)
 
     const service = screen.getByTestId('service')
     const email = screen.getByTestId('email')
     const name = screen.getByTestId('name')
     const password = screen.getByTestId('password')
-    const note = screen.getByTestId('note')
     const submitButton = screen.getByRole('button', { name: '送信' })
 
-    const elems = [service, email, name, password, note, submitButton]
+    const elems = [service, email, name, password, submitButton]
 
     elems.forEach((elem) => {
       expect(elem).toBeInTheDocument()
@@ -28,29 +27,25 @@ describe('InputForm component', () => {
   })
 
   test('Enter the form and click the button', async () => {
-    render(<Form />)
+    render(
+      <Form
+        emailDefaultValue="email@email.com"
+        nameDefaultValue="name"
+        passwordDefaultValue="password"
+        serviceDefaultValue="service"
+      />
+    )
 
-    const service = screen.getByTestId('service')
-    const email = screen.getByTestId('email')
-    const name = screen.getByTestId('name')
-    const password = screen.getByTestId('password')
-    const note = screen.getByTestId('note')
     const submitButton = screen.getByRole('button', { name: '送信' })
 
-    await userEvent.type(service, 'service')
-    await userEvent.type(email, 'email@gmail.com')
-    await userEvent.type(name, 'name')
-    await userEvent.type(password, 'password')
-    await userEvent.type(note, 'note')
     await userEvent.click(submitButton)
 
     const serviceErr = screen.queryByTestId('serviceError')
     const emailErr = screen.queryByTestId('emailError')
     const nameErr = screen.queryByTestId('nameError')
     const passwordErr = screen.queryByTestId('passwordError')
-    const noteErr = screen.queryByTestId('noteError')
 
-    const errors = [serviceErr, emailErr, nameErr, passwordErr, noteErr]
+    const errors = [serviceErr, emailErr, nameErr, passwordErr]
 
     errors.forEach((error) => {
       expect(error).not.toBeInTheDocument()
