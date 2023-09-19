@@ -1,15 +1,23 @@
 'use client'
 
-import { Form } from '@/components/organisms/Form'
+import { useSearchParams } from 'next/navigation'
+
+import { EditForm } from '@/components/templates/EditForm'
 
 import type { NextPage } from 'next'
 
 const Edit: NextPage = () => {
-  return (
-    <>
-      <Form />
-    </>
-  )
+  const params = useSearchParams()
+  const id = params.get('id')
+
+  if (typeof id === 'string') {
+    return (
+      <>
+        <EditForm id={id} />
+      </>
+    )
+  }
+  return <>error</>
 }
 
 export default Edit

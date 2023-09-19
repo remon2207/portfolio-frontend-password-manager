@@ -1,13 +1,11 @@
-'use client'
-
-import { Form } from '@/components/organisms/Form'
+import { CreateForm } from '@/components/templates/CreateForm'
 
 import type { NextPage } from 'next'
 
 const Create: NextPage = () => {
   return (
     <>
-      <Form />
+      <CreateForm />
     </>
   )
 }
