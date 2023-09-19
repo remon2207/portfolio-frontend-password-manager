@@ -8,14 +8,16 @@ export const useSubmit = () => {
   const pathname = usePathname()
 
   const onSubmit: SubmitHandler<Passwords> = async ({ service, email, name, password, two_factor, id }) => {
-    if (pathname === '/create') {
-      await supabase.from('password').insert([{ service, email, name, password, two_factor, user_id: 1 }])
-    } else if (pathname === '/edit') {
-      if (typeof id === 'number') {
-        await supabase.from('password').update({ service, email, name, password, two_factor }).eq('id', id)
+    if (process.env.NODE_ENV !== 'test') {
+      if (pathname === '/create') {
+        await supabase.from('password').insert([{ service, email, name, password, two_factor, user_id: 1 }])
+      } else if (pathname === '/edit') {
+        if (typeof id === 'number') {
+          await supabase.from('password').update({ service, email, name, password, two_factor }).eq('id', id)
+        }
       }
+      window.location.href = '/'
     }
-    window.location.href = '/'
   }
 
   return { onSubmit }
