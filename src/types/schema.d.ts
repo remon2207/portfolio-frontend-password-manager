@@ -22,14 +22,14 @@ export interface Database {
           user_id: number
         }
         Insert: {
-          created_at: string
+          created_at?: string
           email: string
           id?: number
           name: string
           password: string
           service: string
           two_factor?: boolean
-          updated_at: string
+          updated_at?: string
           user_id: number
         }
         Update: {
