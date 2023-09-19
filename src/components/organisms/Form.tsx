@@ -1,49 +1,49 @@
 'use client'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useAtom } from 'jotai'
+import { useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { FormButton } from '@/components/molecules/FormButton'
 import { InputForm } from '@/components/molecules/InputForm'
-import { passwordData } from '@/jotai/atoms'
 import { Passwords } from '@/types/signals'
 import { schema } from '@/utils/YupSchema'
 
-export const Form: React.FC = () => {
-  const [pwData, setPwData] = useAtom(passwordData)
+type Props = {
+  serviceDefaultValue: string
+  emailDefaultValue: string
+  nameDefaultValue: string
+  passwordDefaultValue: string
+}
+
+export const Form: React.FC<Props> = ({
+  serviceDefaultValue,
+  emailDefaultValue,
+  nameDefaultValue,
+  passwordDefaultValue,
+}) => {
+  const router = useRouter()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      service: pwData.service,
-      email: pwData.email,
-      name: pwData.name,
-      password: pwData.password,
-      twoFactor: pwData.twoFactor,
-      note: pwData.note,
-    },
-    resolver: yupResolver(schema),
-  })
-  const onSubmit: SubmitHandler<Passwords> = ({ service, email, name, password, twoFactor, note }) => {
-    setPwData({
-      service,
-      email,
-      name,
-      password,
-      twoFactor,
-      note,
-    })
-  }
+  } = useForm({ resolver: yupResolver(schema) })
 
+  const onSubmit: SubmitHandler<Passwords> = ({ service, email, name, password, twoFactor }) => {
+    router.push('/')
+  }
   return (
     <>
-      <form action="/" className="mx-auto mt-10 flex w-96 flex-col" onSubmit={handleSubmit(onSubmit)}>
-        {errors.service?.message && <span className="form-span">{errors.service?.message}</span>}
+      <form className="mx-auto mt-10 flex w-96 flex-col" noValidate onSubmit={handleSubmit(onSubmit)}>
+        {errors.service && (
+          <span className="form-span" data-testid="serviceError">
+            {errors.service?.message}
+          </span>
+        )}
         <InputForm
           className="input-form"
+          defaultValue={serviceDefaultValue}
           htmlFor="service"
           id="service"
           labelName="サービス"
@@ -51,9 +51,14 @@ export const Form: React.FC = () => {
           testId="service"
           type="text"
         />
-        {errors.email?.message && <span className="form-span left-1 top-60">{errors.email?.message}</span>}
+        {errors.email && (
+          <span className="form-span left-1 top-60" data-testid="emailError">
+            {errors.email?.message}
+          </span>
+        )}
         <InputForm
           className="input-form"
+          defaultValue={emailDefaultValue}
           htmlFor="email"
           id="email"
           labelName="メールアドレス"
@@ -61,9 +66,14 @@ export const Form: React.FC = () => {
           testId="email"
           type="email"
         />
-        {errors.name?.message && <span className="form-span top-[22.5rem]">{errors.name?.message}</span>}
+        {errors.name && (
+          <span className="form-span top-[22.5rem]" data-testid="nameError">
+            {errors.name?.message}
+          </span>
+        )}
         <InputForm
           className="input-form"
+          defaultValue={nameDefaultValue}
           htmlFor="name"
           id="name"
           labelName="名前"
@@ -71,9 +81,14 @@ export const Form: React.FC = () => {
           testId="name"
           type="text"
         />
-        {errors.password?.message && <span className="form-span top-[30rem]">{errors.password?.message}</span>}
+        {errors.password && (
+          <span className="form-span top-[30rem]" data-testid="passwordError">
+            {errors.password?.message}
+          </span>
+        )}
         <InputForm
           className="input-form"
+          defaultValue={passwordDefaultValue}
           htmlFor="password"
           id="password"
           labelName="パスワード"
@@ -92,15 +107,6 @@ export const Form: React.FC = () => {
             type="checkbox"
           />
         </div>
-        <InputForm
-          className="input-form"
-          htmlFor="note"
-          id="note"
-          labelName="メモ"
-          register={register('note')}
-          testId="note"
-          type="text"
-        />
         <FormButton />
       </form>
     </>
