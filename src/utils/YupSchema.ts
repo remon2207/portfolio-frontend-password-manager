@@ -6,5 +6,4 @@ export const schema = yup.object({
   name: yup.string().required('名前を入力してください'),
   password: yup.string().required('パスワードを入力してください'),
   twoFactor: yup.boolean().required(),
-  note: yup.string().required(),
 })

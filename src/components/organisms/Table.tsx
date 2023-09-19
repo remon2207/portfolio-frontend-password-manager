@@ -1,3 +1,5 @@
+'use client'
+
 import { PostgrestSingleResponse } from '@supabase/supabase-js'
 
 import { CellFrame } from '@/components/molecules/CellFrame'
@@ -14,7 +16,6 @@ export const Table: React.FC<Props> = ({ passwords }) => {
       <TableHeaderFrame
         email="メールアドレス"
         name="名前"
-        note="メモ"
         password="パスワード"
         service="サービス"
         twoFactor="2段階認証の有無"
@@ -23,8 +24,8 @@ export const Table: React.FC<Props> = ({ passwords }) => {
         <CellFrame
           key={pw.id}
           email={pw.email}
+          id={pw.id}
           name={pw.name}
-          note={pw.note}
           password={pw.password}
           service={pw.service}
           twoFactor={pw.twoFactor ? '有' : '無'}
