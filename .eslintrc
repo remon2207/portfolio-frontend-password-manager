@@ -53,6 +53,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/display-name": "off",
     "react/require-default-props": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "@typescript-eslint/no-shadow": "off"
   }
 }
