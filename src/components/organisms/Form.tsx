@@ -33,13 +33,13 @@ export const Form: React.FC<Props> = ({
   } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit: SubmitHandler<Passwords> = async ({ service, email, name, password, two_factor }) => {
-    // if (pathname === '/create') {
-    //   await supabase.from('password').insert([{ service, email, name, password, two_factor, user_id: 1 }])
-    // } else if (pathname === '/edit') {
-    //   if (typeof id === 'number') {
-    //     await supabase.from('password').update({ service, email, name, password, two_factor }).eq('id', id)
-    //   }
-    // }
+    if (pathname === '/create') {
+      await supabase.from('password').insert([{ service, email, name, password, two_factor, user_id: 1 }])
+    } else if (pathname === '/edit') {
+      if (typeof id === 'number') {
+        await supabase.from('password').update({ service, email, name, password, two_factor }).eq('id', id)
+      }
+    }
     window.location.href = '/'
   }
 
