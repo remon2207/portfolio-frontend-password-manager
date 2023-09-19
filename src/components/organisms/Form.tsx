@@ -1,19 +1,21 @@
 'use client'
 
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { FormButton } from '@/components/molecules/FormButton'
 import { InputForm } from '@/components/molecules/InputForm'
 import { Passwords } from '@/types/signals'
 import { schema } from '@/utils/YupSchema'
+import { supabase } from '@/utils/supabase'
 
 type Props = {
   serviceDefaultValue: string
   emailDefaultValue: string
   nameDefaultValue: string
   passwordDefaultValue: string
+  id?: number
 }
 
 export const Form: React.FC<Props> = ({
@@ -21,18 +23,26 @@ export const Form: React.FC<Props> = ({
   emailDefaultValue,
   nameDefaultValue,
   passwordDefaultValue,
+  id,
 }) => {
-  const router = useRouter()
-
+  const pathname = usePathname()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) })
 
-  const onSubmit: SubmitHandler<Passwords> = ({ service, email, name, password, twoFactor }) => {
-    router.push('/')
+  const onSubmit: SubmitHandler<Passwords> = async ({ service, email, name, password, two_factor }) => {
+    if (pathname === '/create') {
+      await supabase.from('password').insert([{ service, email, name, password, two_factor, user_id: 1 }])
+    } else if (pathname === '/edit') {
+      if (typeof id === 'number') {
+        await supabase.from('password').update({ service, email, name, password, two_factor }).eq('id', id)
+      }
+    }
+    window.location.href = '/'
   }
+
   return (
     <>
       <form className="mx-auto mt-10 flex w-96 flex-col" noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -52,7 +62,7 @@ export const Form: React.FC<Props> = ({
           type="text"
         />
         {errors.email && (
-          <span className="form-span left-1 top-60" data-testid="emailError">
+          <span className="form-span" data-testid="emailError">
             {errors.email?.message}
           </span>
         )}
@@ -67,7 +77,7 @@ export const Form: React.FC<Props> = ({
           type="email"
         />
         {errors.name && (
-          <span className="form-span top-[22.5rem]" data-testid="nameError">
+          <span className="form-span" data-testid="nameError">
             {errors.name?.message}
           </span>
         )}
@@ -82,7 +92,7 @@ export const Form: React.FC<Props> = ({
           type="text"
         />
         {errors.password && (
-          <span className="form-span top-[30rem]" data-testid="passwordError">
+          <span className="form-span" data-testid="passwordError">
             {errors.password?.message}
           </span>
         )}
