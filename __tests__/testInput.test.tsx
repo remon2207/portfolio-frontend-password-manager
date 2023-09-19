@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import { Form } from '@/components/organisms/Form'
+import { CreateForm } from '@/components/templates/CreateForm'
 
 jest.mock('next/navigation', () => ({
   useRouter: () => ({
@@ -11,7 +11,8 @@ jest.mock('next/navigation', () => ({
 
 describe('InputForm component', () => {
   test('Text box exist', () => {
-    render(<Form emailDefaultValue="" nameDefaultValue="" passwordDefaultValue="" serviceDefaultValue="" />)
+    // render(<Form emailDefaultValue="" nameDefaultValue="" passwordDefaultValue="" serviceDefaultValue="" />)
+    render(<CreateForm />)
 
     const service = screen.getByTestId('service')
     const email = screen.getByTestId('email')
