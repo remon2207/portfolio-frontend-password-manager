@@ -29,18 +29,16 @@ describe('InputForm component', () => {
   })
 
   test('Enter the form and click the button', async () => {
-    render(
-      <Form
-        emailDefaultValue="email@email.com"
-        nameDefaultValue="name"
-        passwordDefaultValue="password"
-        serviceDefaultValue="service"
-      />
-    )
+    render(<Form />)
+    const service = screen.getByTestId('service')
+    const email = screen.getByTestId('email')
+    const name = screen.getByTestId('name')
+    const password = screen.getByTestId('password')
 
-    const submitButton = screen.getByRole('button', { name: '送信' })
-
-    await userEvent.click(submitButton)
+    await userEvent.type(service, 'service')
+    await userEvent.type(email, 'email@gmail.com')
+    await userEvent.type(name, 'name')
+    await userEvent.type(password, 'password')
 
     const serviceErr = screen.queryByTestId('serviceError')
     const emailErr = screen.queryByTestId('emailError')
