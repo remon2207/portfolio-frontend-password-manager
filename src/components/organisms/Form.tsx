@@ -1,6 +1,7 @@
 'use client'
 
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { FormButton } from '@/components/molecules/FormButton'
@@ -26,7 +27,7 @@ export const Form: React.FC<Props> = ({
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) })
+  } = useForm({ mode: 'onChange', resolver: yupResolver(schema) })
   const { onSubmit } = useSubmit()
 
   return (
