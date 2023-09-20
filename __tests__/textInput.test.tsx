@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event'
 import { Form } from '@/components/organisms/Form'
 import { CreateForm } from '@/components/templates/CreateForm'
 
+process.env.NEXT_PUBLIC_SUPABASE_URL = 'http://localhost'
+
 jest.mock('next/navigation', () => ({
   useRouter: () => ({
     push: jest.fn(),
