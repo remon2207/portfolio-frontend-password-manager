@@ -4,12 +4,13 @@ type Props = {
   className?: string
   href: string
   linkName: string
+  testId?: string
 }
 
-export const CustomLink: React.FC<Props> = ({ className, linkName, href }) => {
+export const CustomLink: React.FC<Props> = ({ className, linkName, href, testId }) => {
   return (
     <>
-      <Link className={className} href={href}>
+      <Link className={className} data-testid={testId} href={href}>
         {linkName}
       </Link>
     </>
