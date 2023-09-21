@@ -55,27 +55,51 @@ describe('InputForm Component', () => {
     expect(checkbox).toBeChecked()
   })
 
-  test('Enter the form and click the button', async () => {
+  test('Enter the service and click the button', async () => {
     render(<Form id={0} />)
+
     const service = screen.getByTestId('service')
-    const email = screen.getByTestId('email')
-    const name = screen.getByTestId('name')
-    const password = screen.getByTestId('password')
 
     await userEvent.type(service, 'service')
-    await userEvent.type(email, 'email@gmail.com')
-    await userEvent.type(name, 'name')
-    await userEvent.type(password, 'password')
 
     const serviceErr = screen.queryByTestId('serviceError')
+
+    expect(serviceErr).not.toBeInTheDocument()
+  })
+
+  test('Enter the email and click the button', async () => {
+    render(<Form id={0} />)
+
+    const email = screen.getByTestId('email')
+
+    await userEvent.type(email, 'email@gmail.com')
+
     const emailErr = screen.queryByTestId('emailError')
+
+    expect(emailErr).not.toBeInTheDocument()
+  })
+
+  test('Enter the name and click the button', async () => {
+    render(<Form id={0} />)
+
+    const name = screen.getByTestId('name')
+
+    await userEvent.type(name, 'name')
+
     const nameErr = screen.queryByTestId('nameError')
+
+    expect(nameErr).not.toBeInTheDocument()
+  })
+
+  test('Enter the password and click the button', async () => {
+    render(<Form id={0} />)
+
+    const password = screen.getByTestId('password')
+
+    await userEvent.type(password, 'password')
+
     const passwordErr = screen.queryByTestId('passwordError')
 
-    const errors = [serviceErr, emailErr, nameErr, passwordErr]
-
-    errors.forEach((error) => {
-      expect(error).not.toBeInTheDocument()
-    })
+    expect(passwordErr).not.toBeInTheDocument()
   })
 })
