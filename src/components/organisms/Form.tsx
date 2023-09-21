@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { FormButton } from '@/components/molecules/FormButton'
 import { InputForm } from '@/components/molecules/InputForm'
+import { useClick } from '@/hooks/useClick'
 import { useSubmit } from '@/hooks/useSubmit'
 import { schema } from '@/utils/YupSchema'
 
@@ -28,6 +29,7 @@ export const Form: React.FC<Props> = ({
     formState: { errors },
   } = useForm({ mode: 'onChange', resolver: yupResolver(schema) })
   const { onSubmit } = useSubmit(id)
+  const { handleClickDelete } = useClick(id)
 
   return (
     <>
@@ -103,7 +105,7 @@ export const Form: React.FC<Props> = ({
             type="checkbox"
           />
         </div>
-        <FormButton />
+        <FormButton onClick={handleClickDelete} />
       </form>
     </>
   )
