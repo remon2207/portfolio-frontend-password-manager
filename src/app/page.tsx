@@ -5,7 +5,10 @@ import { Passwords } from '@/types/signals'
 import { supabase } from '@/utils/supabase'
 
 const Home: NextPage = async () => {
-  const passwords: PostgrestSingleResponse<Passwords[]> = await supabase.from('password').select('* user ( id )')
+  const passwords: PostgrestSingleResponse<Passwords[]> = await supabase
+    .from('password')
+    .select()
+    .order('service', { ascending: true })
 
   return (
     <>
