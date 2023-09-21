@@ -19,13 +19,13 @@ describe('InputForm Component', () => {
     expect(input).toBeInTheDocument()
   })
 
-  test('Enter input in input box', () => {
+  test('Enter input in input box', async () => {
     render(<InputForm htmlFor="test" labelName="test" type="text" />)
 
     const input = screen.getByRole('textbox')
 
-    userEvent.type(input, 'test')
+    await userEvent.type(input, 'test')
 
-    expect(input).toHaveTextContent('test')
+    expect(input).toHaveValue('test')
   })
 })
