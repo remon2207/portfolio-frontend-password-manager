@@ -37,6 +37,7 @@
     p-2
     shadow-md
     transition
+    hover:translate-y-1
     hover:shadow-none;
   }
 
