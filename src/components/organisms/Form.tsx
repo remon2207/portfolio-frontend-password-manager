@@ -12,7 +12,7 @@ type Props = {
   emailDefaultValue?: string
   nameDefaultValue?: string
   passwordDefaultValue?: string
-  id?: number
+  id: number
 }
 
 export const Form: React.FC<Props> = ({
@@ -20,13 +20,14 @@ export const Form: React.FC<Props> = ({
   emailDefaultValue,
   nameDefaultValue,
   passwordDefaultValue,
+  id,
 }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: 'onChange', resolver: yupResolver(schema) })
-  const { onSubmit } = useSubmit()
+  const { onSubmit } = useSubmit(id)
 
   return (
     <>
