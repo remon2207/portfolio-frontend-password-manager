@@ -4,7 +4,7 @@ import { CellFrame } from '@/components/molecules/CellFrame'
 import { TableHeaderFrame } from '@/components/molecules/TableHeaderFrame'
 
 describe('Table Component', () => {
-  test('Header exist in table', () => {
+  test('service column in table header exist', () => {
     render(
       <table>
         <TableHeaderFrame email="" name="" password="" service="" twoFactor="" />
@@ -12,13 +12,56 @@ describe('Table Component', () => {
     )
 
     const service = screen.getByTestId('service')
+
+    expect(service).toBeInTheDocument()
+  })
+
+  test('email column in table header exist', () => {
+    render(
+      <table>
+        <TableHeaderFrame email="" name="" password="" service="" twoFactor="" />
+      </table>
+    )
+
     const email = screen.getByTestId('email')
+
+    expect(email).toBeInTheDocument()
+  })
+
+  test('name column in table header exist', () => {
+    render(
+      <table>
+        <TableHeaderFrame email="" name="" password="" service="" twoFactor="" />
+      </table>
+    )
+
     const name = screen.getByTestId('name')
+
+    expect(name).toBeInTheDocument()
+  })
+
+  test('password column in table header exist', () => {
+    render(
+      <table>
+        <TableHeaderFrame email="" name="" password="" service="" twoFactor="" />
+      </table>
+    )
+
     const password = screen.getByTestId('password')
 
-    const headers = [service, email, name, password]
+    expect(password).toBeInTheDocument()
+  })
 
-    headers.forEach((header) => expect(header).toBeInTheDocument())
+  test('twoFactor column in table header exist', () => {
+    render(
+      <table>
+        <TableHeaderFrame email="" name="" password="" service="" twoFactor="" />
+      </table>
+    )
+
+    const twoFactor = screen.getByTestId('twoFactor')
+
+    expect(twoFactor).toBeInTheDocument()
   })
 
   test('service exist in the header', () => {

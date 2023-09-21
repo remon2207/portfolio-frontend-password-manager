@@ -3,31 +3,48 @@ import { render, screen } from '@testing-library/react'
 import { Header } from '@/components/organisms/Header'
 
 describe('Header Component', () => {
-  test('render 3 header buttons', async () => {
+  test('createButton exist in Header component', () => {
     render(<Header />)
 
-    const buttonList = await screen.findAllByRole('link')
-    expect(buttonList).toHaveLength(3)
+    const createButton = screen.getByTestId('createButton')
+
+    expect(createButton).toBeInTheDocument()
+  })
+
+  test('title exist in Header component', () => {
+    render(<Header />)
+
+    const title = screen.getByTestId('title')
+
+    expect(title).toBeInTheDocument()
+  })
+
+  test('signoutButton exist in Header component', () => {
+    render(<Header />)
+
+    const signoutButton = screen.getByTestId('signoutButton')
+
+    expect(signoutButton).toBeInTheDocument()
   })
 
   test('create button name', () => {
     render(<Header />)
 
-    const name = screen.getByText('新規作成')
-    expect(name).toBeInTheDocument()
+    const createButton = screen.getByTestId('createButton')
+    expect(createButton).toHaveTextContent('新規作成')
   })
 
   test('logout button name', () => {
     render(<Header />)
 
-    const name = screen.getByText('ログアウト')
-    expect(name).toBeInTheDocument()
+    const title = screen.getByTestId('title')
+    expect(title).toHaveTextContent('パスワード管理')
   })
 
   test('header title', () => {
     render(<Header />)
 
-    const title = screen.getByText('パスワード管理')
-    expect(title).toBeInTheDocument()
+    const signoutButton = screen.getByTestId('signoutButton')
+    expect(signoutButton).toHaveTextContent('ログアウト')
   })
 })
