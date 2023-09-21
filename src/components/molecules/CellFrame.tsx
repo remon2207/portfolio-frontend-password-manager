@@ -17,7 +17,7 @@ export const CellFrame: React.FC<Props> = ({ id, service, email, name, password,
 
   return (
     <tbody>
-      <tr className="hover">
+      <tr>
         <td data-testid="service">
           <Link className="break-all" href={`/edit?id=${id}`}>
             {service}
