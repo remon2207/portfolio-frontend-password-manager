@@ -11,9 +11,6 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 20.6.0
-          env:
-            NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-            NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         - name: create env file
           run: |
               touch .env
