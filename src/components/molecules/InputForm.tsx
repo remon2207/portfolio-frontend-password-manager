@@ -31,7 +31,7 @@ export const InputForm: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <Label className="mx-auto mb-2" htmlFor={htmlFor} labelName={labelName} />
+      <Label className="mx-auto mb-2" htmlFor={htmlFor} labelName={labelName} testId="label" />
       <Input
         className={className}
         defaultValue={defaultValue}
