@@ -1,10 +1,8 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
-
-import { EditForm } from '@/components/templates/EditForm'
-
 import type { NextPage } from 'next'
+import { useSearchParams } from 'next/navigation'
+import { EditForm } from '@/components/templates/EditForm'
 
 const Edit: NextPage = () => {
   const params = useSearchParams()

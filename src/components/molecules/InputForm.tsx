@@ -1,7 +1,6 @@
 'use client'
 
 import { UseFormRegisterReturn } from 'react-hook-form'
-
 import { Input } from '@/components/atoms/Input'
 import { Label } from '@/components/atoms/Label'
 

@@ -1,6 +1,5 @@
-import { CreateForm } from '@/components/templates/CreateForm'
-
 import type { NextPage } from 'next'
+import { CreateForm } from '@/components/templates/CreateForm'
 
 const Create: NextPage = () => {
   return (

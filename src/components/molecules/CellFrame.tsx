@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-
 import { Input } from '@/components/atoms/Input'
 
 type Props = {

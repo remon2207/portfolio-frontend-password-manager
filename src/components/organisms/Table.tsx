@@ -1,7 +1,6 @@
 'use client'
 
 import { PostgrestSingleResponse } from '@supabase/supabase-js'
-
 import { CellFrame } from '@/components/molecules/CellFrame'
 import { TableHeaderFrame } from '@/components/molecules/TableHeaderFrame'
 import { Passwords } from '@/types/signals'

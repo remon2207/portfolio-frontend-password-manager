@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js'
-
 import type { Database } from '@/types/schema'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
