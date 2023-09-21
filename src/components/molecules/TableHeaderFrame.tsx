@@ -12,11 +12,11 @@ export const TableHeaderFrame: React.FC<Props> = ({ service, email, name, passwo
   return (
     <thead>
       <tr>
-        <TableHead className="break-all" header={service} />
-        <TableHead className="break-all" header={email} />
-        <TableHead className="break-all" header={name} />
-        <TableHead className="break-all" header={password} />
-        <TableHead className="whitespace-normal break-all" header={twoFactor} />
+        <TableHead className="break-all" header={service} testId="service" />
+        <TableHead className="break-all" header={email} testId="email" />
+        <TableHead className="break-all" header={name} testId="name" />
+        <TableHead className="break-all" header={password} testId="password" />
+        <TableHead className="whitespace-normal break-all" header={twoFactor} testId="twoFactor" />
       </tr>
     </thead>
   )

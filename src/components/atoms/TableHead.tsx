@@ -1,12 +1,15 @@
 type Props = {
   header: string
   className?: string
+  testId?: string
 }
 
-export const TableHead: React.FC<Props> = ({ header, className }) => {
+export const TableHead: React.FC<Props> = ({ header, className, testId }) => {
   return (
     <>
-      <th className={className}>{header}</th>
+      <th className={className} data-testid={testId}>
+        {header}
+      </th>
     </>
   )
 }

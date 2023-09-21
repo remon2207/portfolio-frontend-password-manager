@@ -19,17 +19,29 @@ export const CellFrame: React.FC<Props> = ({ id, service, email, name, password,
   return (
     <tbody>
       <tr className="hover">
-        <td>
+        <td data-testid="service">
           <Link className="break-all" href={`/edit?id=${id}`}>
             {service}
           </Link>
         </td>
-        <td className="break-all">{email}</td>
-        <td className="break-all">{name}</td>
-        <td>
-          <Input className="cell-input" onFocus={handleFocusAllSelect} readOnly size={5} type="text" value={password} />
+        <td className="break-all" data-testid="email">
+          {email}
         </td>
-        <td>{twoFactor}</td>
+        <td className="break-all" data-testid="name">
+          {name}
+        </td>
+        <td>
+          <Input
+            className="cell-input"
+            onFocus={handleFocusAllSelect}
+            readOnly
+            size={5}
+            testId="password"
+            type="text"
+            value={password}
+          />
+        </td>
+        <td data-testid="twoFactor">{twoFactor}</td>
       </tr>
     </tbody>
   )
