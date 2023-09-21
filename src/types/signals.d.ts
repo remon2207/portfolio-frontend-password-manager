@@ -6,6 +6,7 @@ export type Users = {
 
 export type Passwords = {
   id?: number
+  user_id?: number
   service: string
   email: string
   name: string

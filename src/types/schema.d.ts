@@ -61,11 +61,11 @@ export interface Database {
           updated_at: string
         }
         Insert: {
-          created_at: string
+          created_at?: string
           email: string
           id?: number
           name: string
-          updated_at: string
+          updated_at?: string
         }
         Update: {
           created_at?: string

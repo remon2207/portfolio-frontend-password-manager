@@ -14,6 +14,7 @@ type Props = {
   nameDefaultValue?: string
   passwordDefaultValue?: string
   id: number
+  userId?: number
 }
 
 export const Form: React.FC<Props> = ({
@@ -22,13 +23,14 @@ export const Form: React.FC<Props> = ({
   nameDefaultValue,
   passwordDefaultValue,
   id,
+  userId,
 }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: 'onChange', resolver: yupResolver(schema) })
-  const { onSubmit } = useSubmit(id)
+  const { onSubmit } = useSubmit(id, Number(userId))
   const { handleClickDelete } = useClick(id)
 
   return (

@@ -1,3 +1,6 @@
+'use client'
+
+import { signOut } from 'next-auth/react'
 import { CustomLink } from '@/components/atoms/CustomLink'
 import { Title } from '@/components/atoms/Title'
 
@@ -17,8 +20,9 @@ export const HeaderBar = () => {
       />
       <CustomLink
         className="header-button mr-4 md:mr-20 xl:mr-64"
-        href="/signin"
+        href="/"
         linkName="ログアウト"
+        onClick={() => signOut()}
         testId="signoutButton"
       />
     </div>

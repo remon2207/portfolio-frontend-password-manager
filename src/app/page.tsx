@@ -1,14 +1,14 @@
-import type { PostgrestSingleResponse } from '@supabase/supabase-js'
 import { NextPage } from 'next'
 import { Table } from '@/components/organisms/Table'
-import { Passwords } from '@/types/signals'
-import { supabase } from '@/utils/supabase'
+import { sessionCheck } from '@/utils/sessionCheck'
 
 const Home: NextPage = async () => {
-  const passwords: PostgrestSingleResponse<Passwords[]> = await supabase
-    .from('password')
-    .select()
-    .order('service', { ascending: true })
+  const data = await sessionCheck()
+  const passwords = data?.passwords
+
+  if (typeof passwords === 'undefined') {
+    return <p>error...</p>
+  }
 
   return (
     <>

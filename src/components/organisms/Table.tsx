@@ -1,12 +1,11 @@
 'use client'
 
-import { PostgrestSingleResponse } from '@supabase/supabase-js'
 import { CellFrame } from '@/components/molecules/CellFrame'
 import { TableHeaderFrame } from '@/components/molecules/TableHeaderFrame'
 import { Passwords } from '@/types/signals'
 
 type Props = {
-  passwords: PostgrestSingleResponse<Passwords[]>
+  passwords: Passwords[]
 }
 
 export const Table: React.FC<Props> = ({ passwords }) => {
@@ -19,7 +18,7 @@ export const Table: React.FC<Props> = ({ passwords }) => {
         service="サービス"
         twoFactor="2段階認証の有無"
       />
-      {passwords.data?.map((pw) => (
+      {passwords.map((pw) => (
         <CellFrame
           key={pw.id}
           email={pw.email}
