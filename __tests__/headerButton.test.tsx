@@ -1,50 +1,61 @@
 import { render, screen } from '@testing-library/react'
-
-import { Header } from '@/components/organisms/Header'
+import { CustomLink } from '@/components/atoms/CustomLink'
+import { Title } from '@/components/atoms/Title'
 
 describe('Header Component', () => {
-  test('createButton exist in Header component', () => {
-    render(<Header />)
+  test('CreateButton exist in header component', () => {
+    render(<CustomLink href="" linkName="" testId="createButton" />)
 
     const createButton = screen.getByTestId('createButton')
 
     expect(createButton).toBeInTheDocument()
   })
 
-  test('title exist in Header component', () => {
-    render(<Header />)
+  test('Title exist in header component', () => {
+    render(<Title testId="title" title="" />)
 
     const title = screen.getByTestId('title')
 
     expect(title).toBeInTheDocument()
   })
 
-  test('signoutButton exist in Header component', () => {
-    render(<Header />)
+  test('Signin or signout button exist in header component', () => {
+    render(<CustomLink href="" linkName="" testId="signoutButton" />)
 
-    const signoutButton = screen.getByTestId('signoutButton')
+    const button = screen.getByTestId('signoutButton')
 
-    expect(signoutButton).toBeInTheDocument()
+    expect(button).toBeInTheDocument()
   })
 
-  test('create button name', () => {
-    render(<Header />)
+  test('Create button text name exist', () => {
+    render(<CustomLink href="" linkName="新規作成" testId="createButton" />)
 
-    const createButton = screen.getByTestId('createButton')
-    expect(createButton).toHaveTextContent('新規作成')
+    const button = screen.getByTestId('createButton')
+
+    expect(button).toHaveTextContent('新規作成')
   })
 
-  test('logout button name', () => {
-    render(<Header />)
+  test('Title exist', () => {
+    render(<Title testId="title" title="パスワード管理" />)
 
     const title = screen.getByTestId('title')
+
     expect(title).toHaveTextContent('パスワード管理')
   })
 
-  test('header title', () => {
-    render(<Header />)
+  test('Signout button text name exist', () => {
+    render(<CustomLink href="" linkName="サインアウト" testId="signoutButton" />)
 
-    const signoutButton = screen.getByTestId('signoutButton')
-    expect(signoutButton).toHaveTextContent('ログアウト')
+    const button = screen.getByTestId('signoutButton')
+
+    expect(button).toHaveTextContent('サインアウト')
+  })
+
+  test('Signin button text name exist', () => {
+    render(<CustomLink href="" linkName="サインイン" testId="signinButton" />)
+
+    const button = screen.getByTestId('signinButton')
+
+    expect(button).toHaveTextContent('サインイン')
   })
 })
