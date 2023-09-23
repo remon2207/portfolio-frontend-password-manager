@@ -27,10 +27,9 @@ export const sessionCheck = async () => {
     return { passwords, userId }
   }
 
-  if (!sessionName && !sessionEmail) {
+  if (!session?.user) {
     return null
   }
-
   await supabase.from('user').insert([{ email: sessionEmail, name: sessionName }])
 
   const data = await fetchData()
