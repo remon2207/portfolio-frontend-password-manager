@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-import Image from 'next/image'
 import { Table } from '@/components/organisms/Table'
 import { sessionCheck } from '@/utils/sessionCheck'
 
@@ -17,7 +16,7 @@ const Home: NextPage = async () => {
   }
 
   if (typeof passwords === 'undefined') {
-    return <p>error...</p>
+    return null
   }
 
   return (
