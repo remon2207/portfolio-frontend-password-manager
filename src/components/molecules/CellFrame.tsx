@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const CellFrame: React.FC<Props> = ({ id, service, email, name, password, twoFactor }) => {
-  const handleFocusAllSelect = (e: React.FocusEvent<HTMLInputElement>) => e.target.select()
+  const handleClickAllSelect = () => navigator.clipboard.writeText(password)
 
   return (
     <tbody>
@@ -32,7 +32,7 @@ export const CellFrame: React.FC<Props> = ({ id, service, email, name, password,
         <td>
           <Input
             className="cell-input"
-            onFocus={handleFocusAllSelect}
+            onClick={handleClickAllSelect}
             readOnly
             size={5}
             testId="password"

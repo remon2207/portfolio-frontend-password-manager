@@ -14,7 +14,7 @@ export const Table: React.FC<Props> = ({ passwords }) => {
       <TableHeaderFrame
         email="メールアドレス"
         name="名前"
-        password="パスワード"
+        password={`パスワード\n(クリックでコピー)`}
         service="サービス"
         twoFactor="2段階認証の有無"
       />
