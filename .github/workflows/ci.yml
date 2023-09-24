@@ -1,8 +1,6 @@
 name: ci
 on:
-  push:
-    branches:
-      - dev
+  - push
 jobs:
     test:
       name: Run test code
