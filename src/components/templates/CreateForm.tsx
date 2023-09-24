@@ -6,7 +6,11 @@ export const CreateForm: React.FC = async () => {
   const userId = data?.userId
 
   if (typeof userId === 'undefined') {
-    return <p>error...</p>
+    return (
+      <>
+        <h1 className="relative top-[30%] text-center text-2xl font-bold lg:text-4xl">サインインしてください</h1>
+      </>
+    )
   }
 
   return (
