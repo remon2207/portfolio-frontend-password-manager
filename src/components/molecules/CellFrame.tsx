@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useState } from 'react'
 import { Input } from '@/components/atoms/Input'
 
 type Props = {
@@ -13,7 +14,15 @@ type Props = {
 }
 
 export const CellFrame: React.FC<Props> = ({ id, service, email, name, password, twoFactor }) => {
-  const handleClickAllSelect = () => navigator.clipboard.writeText(password)
+  const [isOpen, setIsOpen] = useState(false)
+
+  const handleClickCopy = () => {
+    navigator.clipboard.writeText(password)
+    setIsOpen(true)
+    setTimeout(() => {
+      setIsOpen(false)
+    }, 2000)
+  }
 
   return (
     <tbody>
@@ -32,13 +41,14 @@ export const CellFrame: React.FC<Props> = ({ id, service, email, name, password,
         <td>
           <Input
             className="cell-input"
-            onClick={handleClickAllSelect}
+            onClick={handleClickCopy}
             readOnly
             size={5}
             testId="password"
             type="text"
             value={password}
           />
+          {isOpen && <span className="block py-2">(コピーしました)</span>}
         </td>
         <td data-testid="twoFactor">{twoFactor}</td>
       </tr>
