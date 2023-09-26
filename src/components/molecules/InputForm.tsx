@@ -17,11 +17,11 @@ export const InputForm: React.FC<Props> = ({
   htmlFor,
   labelName,
   readOnly,
-  onChange,
   testId,
   className,
   register,
   defaultValue,
+  onClick,
 }) => {
   return (
     <>
@@ -30,7 +30,7 @@ export const InputForm: React.FC<Props> = ({
         className={className}
         defaultValue={defaultValue}
         id={id}
-        onChange={onChange}
+        onClick={onClick}
         readOnly={readOnly}
         testId={testId}
         type={type}
