@@ -48,7 +48,7 @@ export const CellFrame: React.FC<Props> = ({ id, service, email, name, password,
             type="text"
             value={password}
           />
-          {isOpen && <span className="block py-2">(コピーしました)</span>}
+          {isOpen && <span className="block py-2 text-red-600">(コピーしました)</span>}
         </td>
         <td data-testid="twoFactor">{twoFactor}</td>
       </tr>

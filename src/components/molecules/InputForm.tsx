@@ -4,17 +4,11 @@ import { UseFormRegisterReturn } from 'react-hook-form'
 import { Input } from '@/components/atoms/Input'
 import { Label } from '@/components/atoms/Label'
 
-type Props = {
-  id?: string
-  type: React.HTMLInputTypeAttribute
+type Props = React.ComponentPropsWithoutRef<'input'> & {
   htmlFor: string
-  className?: string
   labelName: string
-  readOnly?: boolean
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
   testId?: string
   register?: UseFormRegisterReturn
-  defaultValue?: string | number | readonly string[] | undefined
 }
 
 export const InputForm: React.FC<Props> = ({
@@ -23,11 +17,11 @@ export const InputForm: React.FC<Props> = ({
   htmlFor,
   labelName,
   readOnly,
-  onChange,
   testId,
   className,
   register,
   defaultValue,
+  onClick,
 }) => {
   return (
     <>
@@ -36,7 +30,7 @@ export const InputForm: React.FC<Props> = ({
         className={className}
         defaultValue={defaultValue}
         id={id}
-        onChange={onChange}
+        onClick={onClick}
         readOnly={readOnly}
         testId={testId}
         type={type}
