@@ -10,10 +10,8 @@ type Props = {
 
 export const CustomLink: React.FC<Props> = ({ className, linkName, href, testId, onClick }) => {
   return (
-    <>
-      <Link className={className} data-testid={testId} href={href} onClick={onClick}>
-        {linkName}
-      </Link>
-    </>
+    <Link className={className} data-testid={testId} href={href} onClick={onClick}>
+      {linkName}
+    </Link>
   )
 }

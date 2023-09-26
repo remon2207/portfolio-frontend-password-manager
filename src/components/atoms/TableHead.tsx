@@ -6,10 +6,8 @@ type Props = {
 
 export const TableHead: React.FC<Props> = ({ header, className, testId }) => {
   return (
-    <>
-      <th className={className} data-testid={testId}>
-        {header}
-      </th>
-    </>
+    <th className={className} data-testid={testId}>
+      {header}
+    </th>
   )
 }
