@@ -1,6 +1,7 @@
 'use client'
 
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FormButton } from '@/components/molecules/FormButton'
 import { InputForm } from '@/components/molecules/InputForm'
@@ -30,8 +31,11 @@ export const Form: React.FC<Props> = ({
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: 'onChange', resolver: yupResolver(schema) })
-  const { onSubmit } = useSubmit(id, Number(userId))
+  const [isChecked, setIsChecked] = useState(false)
+  const { onSubmit } = useSubmit(id, Number(userId), isChecked)
   const { handleClickDelete } = useClick(id)
+
+  const handleClickCheck = () => setIsChecked(!isChecked)
 
   return (
     <>
@@ -86,6 +90,17 @@ export const Form: React.FC<Props> = ({
             {errors.password?.message}
           </span>
         )}
+        <div className="flex justify-center">
+          <InputForm
+            className="checkbox mr-20"
+            htmlFor="isHashCheck"
+            id="isHashCheck"
+            labelName="ハッシュ化"
+            onClick={handleClickCheck}
+            testId="isHashCheck"
+            type="checkbox"
+          />
+        </div>
         <InputForm
           className="input-form"
           defaultValue={passwordDefaultValue}

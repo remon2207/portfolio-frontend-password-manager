@@ -7,9 +7,5 @@ type Props = React.ComponentPropsWithoutRef<'input'> & {
 }
 
 export const Input: React.FC<Props> = forwardRef<HTMLInputElement, Props>(({ testId, ...props }, ref) => {
-  return (
-    <>
-      <input ref={ref} data-testid={testId} {...props} />
-    </>
-  )
+  return <input ref={ref} data-testid={testId} {...props} />
 })

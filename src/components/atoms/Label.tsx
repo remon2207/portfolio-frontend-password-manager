@@ -7,10 +7,8 @@ type Props = {
 
 export const Label: React.FC<Props> = ({ htmlFor, className, labelName, testId }) => {
   return (
-    <>
-      <label className={className} data-testid={testId} htmlFor={htmlFor}>
-        {labelName}
-      </label>
-    </>
+    <label className={className} data-testid={testId} htmlFor={htmlFor}>
+      {labelName}
+    </label>
   )
 }
