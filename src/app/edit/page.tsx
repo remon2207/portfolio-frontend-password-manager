@@ -8,11 +8,7 @@ const Edit: NextPage = () => {
   const params = useSearchParams()
   const id = Number(params.get('id'))
 
-  return (
-    <>
-      <EditForm id={id} />
-    </>
-  )
+  return <EditForm id={id} />
 }
 
 export default Edit
