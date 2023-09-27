@@ -1,10 +1,10 @@
 -- CreateTable
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
-    "name" VARCHAR NOT NULL,
-    "email" VARCHAR NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "name" VARCHAR NOT NULL,
+    "email" VARCHAR NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -12,14 +12,14 @@ CREATE TABLE "users" (
 -- CreateTable
 CREATE TABLE "passwords_info" (
     "id" SERIAL NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "user_id" INTEGER NOT NULL,
     "service" VARCHAR NOT NULL,
     "email" VARCHAR NOT NULL,
     "name" VARCHAR NOT NULL,
     "password" VARCHAR NOT NULL,
-    "isTwoFactor" BOOLEAN NOT NULL DEFAULT false,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "is_two_factor" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "passwords_info_pkey" PRIMARY KEY ("id")
 );
