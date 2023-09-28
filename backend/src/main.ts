@@ -13,4 +13,4 @@ app.get('/api', (_, res) => {
 
 app.listen(process.env.PORT)
 
-export const viteNodeApp = app
+// export const viteNodeApp = app
