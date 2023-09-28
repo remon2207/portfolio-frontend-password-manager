@@ -5,10 +5,10 @@ services:
       context: '.'
       dockerfile: './backend/Dockerfile'
     container_name: 'api-portfolio-password-manager'
-    ports:
-      - '${API_PORT:-3001}:3001'
     volumes:
       - './backend:/usr/src/app'
+    ports:
+      - '${API_PORT:-10000}:10000'
     environment:
       NODE_ENV: 'development'
     command: 'npm run dev'
