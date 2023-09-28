@@ -11,6 +11,8 @@ app.get('/api', (_, res) => {
   res.send('Hello World')
 })
 
-app.listen(process.env.PORT)
+if (process.env.NODE_ENV === 'production') {
+  app.listen(process.env.PORT)
+}
 
-// export const viteNodeApp = app
+export const viteNodeApp = app
