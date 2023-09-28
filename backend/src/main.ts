@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 import express from 'express'
 import cors from 'cors'
 
@@ -9,6 +11,6 @@ app.get('/api', (_, res) => {
   res.send('Hello World')
 })
 
-app.listen()
+app.listen(process.env.PORT)
 
 export const viteNodeApp = app
