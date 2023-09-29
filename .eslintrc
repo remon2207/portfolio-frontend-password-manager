@@ -19,7 +19,7 @@
       "jsx": true
     },
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "tsconfig.json"
   },
   "rules": {
     "react/function-component-definition": [
