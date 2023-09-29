@@ -1,0 +1,6 @@
+/node_modules/
+/.lintstagedrc.js
+/postcss.config.js
+/tailwind.config.ts
+/next.config.js
+/jest.setup.js
